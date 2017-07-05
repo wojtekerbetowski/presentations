@@ -119,15 +119,53 @@ First 1 million requests per month.
 
 ---
 
-Higher level programming
-* several serverless frameworks
-* serverless framework
-    * hello world
-    * async and libs
-    * deploy and partial deploy (cloud formation)
-    * hello S3
-    * hello DB
-    * scheduled hello
+# Serverless frameworks
+## Raising the API level
+
+1. Serverless.com
+1. Apex
+1. Chalice
+1. Kappa
+1. Sparta
+1. Zappa
+
+---
+
+# Serverless framework
+
+1. Deployments
+1. Declarative (YAML)
+1. Resource management (S3, DynamoDB, VPC)
+1. Logs
+1. Triggers, APIs
+1. Local execution
+
+---
+
+hello serverless framework!
+
+---
+
+deploy
+
+---
+
+partial deploy
+
+---
+^ note - time savings go to AWS pocket
+
+how to async?
+
+---
+
+working with S3
+
+---
+
+scheduling tasks
+
+---
 
 Perfect use cases
 * S3 images processing

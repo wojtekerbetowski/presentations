@@ -146,24 +146,135 @@ hello serverless framework!
 
 ---
 
+set up
+
+```yaml
+service: my-service
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+```
+
+---
+
+handle
+
+```javascript
+module.exports.hello = (event, context, callback) => {
+  const response = {
+    statusCode: 200,
+    body: JSON.stringify({
+      message: 'Hello Polyconf!',
+      input: event,
+    }),
+  };
+
+  callback(null, response);
+};
+```
+
+---
+
 deploy
+
+```
+$ serverless deploy
+Serverless: Packaging service...
+Serverless: Uploading CloudFormation file to S3...
+Serverless: Uploading artifacts...
+Serverless: Uploading service .zip file to S3 (307 B)...
+Serverless: Validating template...
+Serverless: Updating Stack...
+Serverless: Checking Stack update progress...
+..............
+Serverless: Stack update finished...
+Service Information
+service: my-service
+stage: dev
+region: us-east-1
+api keys:
+  None
+endpoints:
+  GET - https://.../dev/hello
+functions:
+  hello: my-service-dev-hello
+```
 
 ---
 
 partial deploy
+
+```
+$ serverless deploy function -f hello
+```
+
+---
+
+Use
+
+```
+$ serverless invoke -f hello
+
+$ curl "https://.../dev/hello"
+```
 
 ---
 ^ note - time savings go to AWS pocket
 
 how to async?
 
+```
+
+```
+
+---
+how to async?
+
+```
+
+```
+
 ---
 
 working with S3
 
+```javascript
+fetch('image URL')
+  .then(res => {
+    return s3.putObject({Bucket, Key, Body: res.body}).promise();
+  }).then(res => {
+    callback(null, res);
+  }).catch(err => {
+    callback(err, null);
+  });
+```
+
 ---
 
 scheduling tasks
+
+```yaml
+functions:
+  cron:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every minute
+      - schedule: rate(1 minute)
+  secondCron:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every 2nd minute from Mon-Fri
+      - schedule: cron(0/2 * ? * MON-FRI *)
+```
 
 ---
 
@@ -202,6 +313,7 @@ Extras
 * Serverlessify regular app (WSGI)
 * Golem
 
-Przepisać na lambdę medicover i opowiedzieć
+---
+^
 Is it new? GAE
-Experiment: async pays off to AWS
+sample recursion: https://github.com/serverless/examples/blob/master/aws-node-recursive-function/handler.js

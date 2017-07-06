@@ -1,15 +1,11 @@
 service: polyconf-async
 
 plugins:
-  - serverless-babel-plugin
+  - serverless-webpack
 
 provider:
   name: aws
   runtime: nodejs6.10
-
-custom:
-  babelPresets:
-    - latest
 
 functions:
   promise:
@@ -19,9 +15,9 @@ functions:
           path: hello-promise
           method: get
 
-  async:
-    handler: handler.helloAsync
-    events:
-      - http:
-          path: hello-async
-          method: get
+  # async:
+  #   handler: handler.helloAsync
+  #   events:
+  #     - http:
+  #         path: hello-async
+  #         method: get

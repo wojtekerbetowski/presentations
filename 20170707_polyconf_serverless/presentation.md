@@ -44,11 +44,17 @@ as we actually sure servers, even more
 another name is **FaaS** or **Function as a Service**
 
 ---
+
+a nice comparison is that
+**Serverless** is to **computing**
+what **S3** is to **file storage**
+
+---
 ^ TODO: nice comparison against BaaS
 
 # What Serverless is not?
 
-1. BaaS
+1. BaaS (or is it?)
 1. parallel computing engine
 
 ---
@@ -123,6 +129,12 @@ First 1 million requests per month.
 
 ---
 
+[.hide-footer]
+
+![fit](https://camo.githubusercontent.com/d105c0f4077021514bd825b9be4da52d158e4e23/68747470733a2f2f7777772e64726f70626f782e636f6d2f732f373138766b307269696933686e676e2f53637265656e73686f74253230323031372d30332d323025323030392e32312e35342e706e673f646c3d31)
+
+---
+
 # Serverless frameworks
 ## Raising the API level
 
@@ -143,10 +155,6 @@ First 1 million requests per month.
 1. Logs
 1. Triggers, APIs
 1. Local execution
-
----
-
-hello serverless framework!
 
 ---
 
@@ -225,10 +233,21 @@ $ serverless deploy function -f hello
 
 Use
 
-```
-$ serverless invoke -f hello
+`$ serverless invoke -f hello`
+or
+`$ curl "https://.../dev/hello"`
+output:
 
-$ curl "https://.../dev/hello"
+```javascript
+{
+  message: "Hello Polyconf!",
+  input: {
+    resource: "/hello",
+    path: "/hello",
+    httpMethod: "GET",
+    headers: {
+      ...
+}
 ```
 
 ---
@@ -236,15 +255,45 @@ $ curl "https://.../dev/hello"
 
 how to async?
 
-```
+```javascript
+export function helloPromise(event, context, callback) {
+  console.log('Running hello promise');
+  fetch('https://api.github.com/users/github')
+    .then(res => res.json())
+    .then(json => {
+      const location = json['location'];
 
+      callback(null, {
+        status: 200,
+        body: JSON.stringify({ location }),
+      });
+    }, err => callback(null, {
+      status: 200,
+      error: err,
+    }));
+}
 ```
 
 ---
+
 how to async?
 
+```yaml
+plugins:
+  - serverless-webpack
 ```
 
+```javascript
+export async function helloAsync(event, context, callback) {
+  const res = await fetch('https://api.github.com/users/github');
+  const json = await res.json();
+  const location = json['location'];
+
+  callback(null, {
+    status: 200,
+    body: JSON.stringify({ location }),
+  });
+}
 ```
 
 ---
@@ -260,6 +309,23 @@ fetch('image URL')
   }).catch(err => {
     callback(err, null);
   });
+```
+
+---
+
+working with S3
+
+```yaml
+functions:
+  users:
+    handler: users.handler
+    events:
+      - s3:
+          bucket: photos
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploads/
+            - suffix: .jpg
 ```
 
 ---
@@ -326,10 +392,16 @@ Two students re-done the service
 
 ---
 
-# Extras
-1.  Serverlessify regular app
-1.  Golem
+## Bonus 1
+Serverlessify regular app
 
 ---
 
-# Thank you!
+## Bonus 2
+Project Golem
+
+---
+
+[.hide-footer]
+
+![](https://camo.githubusercontent.com/32f1f22e148861fa5f205d8d798c8396d49b97b4/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f6d70722f6d70722f41414541415141414141414141416968414141414a4745774d4441324f54426a4c5751774e4449744e44646c4d5330354e6a4d344c5759784e4459335932566c4d6d4d794e412e706e67)

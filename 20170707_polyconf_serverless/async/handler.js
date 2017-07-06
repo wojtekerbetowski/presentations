@@ -17,13 +17,13 @@ export function helloPromise(event, context, callback) {
     }));
 };
 
-export async function helloAsync(event, context, callback) {
-  const res = await fetch('https://api.github.com/users/github');
-  const json = await res.json();
-  const location = json['location'];
-
-  callback(null, {
-    status: 200,
-    body: JSON.stringify({ location }),
-  });
-};
+// export async function helloAsync(event, context, callback) {
+//   const res = await fetch('https://api.github.com/users/github');
+//   const json = await res.json();
+//   const location = json['location'];
+//
+//   callback(null, {
+//     status: 200,
+//     body: JSON.stringify({ location }),
+//   });
+// };

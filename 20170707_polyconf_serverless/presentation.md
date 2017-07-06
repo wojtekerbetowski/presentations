@@ -23,6 +23,7 @@ Generalist.
 Passionate about the people, then the process.
 
 MSc in mathematics.
+Expert Software Engineer at Codility.
 
 ---
 
@@ -105,6 +106,7 @@ Current options are
 # Pricing
 
 Lambdas are priced per:
+
 1. number of requests
 1. 100s of milliseconds (depends on declared memory)
 
@@ -399,9 +401,3 @@ Serverlessify regular app
 
 ## Bonus 2
 Project Golem
-
----
-
-[.hide-footer]
-
-![](https://camo.githubusercontent.com/32f1f22e148861fa5f205d8d798c8396d49b97b4/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f6d70722f6d70722f41414541415141414141414141416968414141414a4745774d4441324f54426a4c5751774e4449744e44646c4d5330354e6a4d344c5759784e4459335932566c4d6d4d794e412e706e67)

@@ -1,4 +1,4 @@
-footer: twitter: @erbetowski
+footer: twitter: @erbetowski  website: erbetowski.pl
 Welcome!
 
 I am Wojtek Erbetowski. You pronounce my first name like "Voytech". And this talk is about Serverless computing.
@@ -8,6 +8,10 @@ I you want to mention me, I am:
 * wojtek.erbetowski pretty much everywhere else
 
 ---
+^
+Is it new? GAE
+sample recursion: https://github.com/serverless/examples/blob/master/aws-node-recursive-function/handler.js
+add dynamoDB sample
 
 # Who am I?
 
@@ -278,42 +282,54 @@ functions:
 
 ---
 
-Perfect use cases
-* S3 images processing
-* Chatbots
-* Websites
-* Inconsistent traffic
-* Log analysis on the fly
-* Event Sourcing
+# Perfect use cases
 
-Easy tools take over the world
-* Greek and Romans?
-* Lack of operations and system administration
-* Lambda is to computing what S3 is to storage
-* Two students re-done the service
-
-Limitations
-* Disk space
-* Deployment package size
-* Memory
-* Time
-
-Pain points
-* Monitor usage
-* Debugging
-* Wall of requests hit AWS (doesn’t scale that well)
-* Cost management
-
-Biggest wins
-* Scalability
-* Pricing
-* NoOps
-
-Extras
-* Serverlessify regular app (WSGI)
-* Golem
+1. S3 images processing
+1.  Chatbots
+1.  Websites
+1.  Inconsistent traffic
+1.  Log analysis on the fly
+1.  Event Sourcing
 
 ---
-^
-Is it new? GAE
-sample recursion: https://github.com/serverless/examples/blob/master/aws-node-recursive-function/handler.js
+^ * Greek and Romans?
+Lack of operations and system administration
+Lambda is to computing what S3 is to storage
+Two students re-done the service
+
+# **Tools** that are
+# **easy** to use
+# **take over** the world
+
+---
+
+# Limitations
+1.  Disk space
+1.  Deployment package size
+1.  Memory
+1.  Time
+
+---
+
+# Pain points
+1.  Monitor usage
+1.  Debugging
+1.  Wall of requests hit AWS
+1.  Cost management
+
+---
+
+# Biggest wins
+1.  Scalability
+1.  Pricing
+1.  NoOps
+
+---
+
+# Extras
+1.  Serverlessify regular app
+1.  Golem
+
+---
+
+# Thank you!

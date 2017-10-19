@@ -187,7 +187,7 @@ module.exports.hello = (event, context, callback) => {
   const response = {
     statusCode: 200,
     body: JSON.stringify({
-      message: 'Hello Polyconf!',
+      message: 'Hello Future3!',
       input: event,
     }),
   };
@@ -242,7 +242,7 @@ output:
 
 ```javascript
 {
-  message: "Hello Polyconf!",
+  message: "Hello Future3!",
   input: {
     resource: "/hello",
     path: "/hello",
@@ -396,4 +396,3 @@ Two students re-done the service
 
 ## Bonus
 Serverlessify regular app
-
